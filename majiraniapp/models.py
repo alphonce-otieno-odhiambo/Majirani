@@ -38,3 +38,10 @@ class Neighborhood (models.Model):
     @receiver(post_save, sender=User)
     def save_user_pneigborhood(sender, instance, **kwargs):
         instance.neighborhood.save()
+
+class Ocuupant(models.Model):
+    name = models.CharField(max_length=50)
+    occ_id = models.AutoField
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
+    email = models.EmailField
+    

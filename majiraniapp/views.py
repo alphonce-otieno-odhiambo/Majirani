@@ -28,6 +28,6 @@ def update_profile(request,id):
                 return redirect('profile')
     return render(request, 'profile/profile_form.html', {"form":form})
 
-def neigborhoods(request, id):
-    neigborhood = Neighborhood.objects.get(id = id)
-    return (request, 'niegborhood/majirani.html')
+def neigborhoods(request , id):
+    neigborhood = Neighborhood.objects.get(id=id)
+    return render(request, 'neighborhood/majirani.html', {"neigborhood":neigborhood})
