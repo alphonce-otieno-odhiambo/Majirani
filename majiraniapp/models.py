@@ -82,3 +82,12 @@ class Business(models.Model):
 
     def __str__(self):
         return self.bizz_name
+
+class Post(models.Model):
+    title= models.CharField(max_length=150)
+    info = models.TextField(max_length=400)
+    date_posted = models.DateTimeField(default=timezone.now)
+
+    def save_business(self):
+        self.save()
+
