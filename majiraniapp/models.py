@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save,post_delete
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
 from django.contrib.contenttypes.fields import GenericRelation
@@ -41,7 +41,7 @@ class Neighborhood (models.Model):
 
 class Occupant(models.Model):
     name = models.CharField(max_length=50)
-    occ_id = models.AutoField
+    occ_id = models.AutoField(primary_key=True)
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
     email = models.EmailField()
 
@@ -54,3 +54,6 @@ class Occupant(models.Model):
     @receiver(post_save, sender=User)
     def save_occupant(sender, instance, **kwargs):
         instance.occupant.save()
+    @receiver(post_delete, sender=User)
+    def delete_occupant(sender, instance, **kwargs):
+        instance.occupant.delete()
