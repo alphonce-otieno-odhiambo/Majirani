@@ -51,3 +51,17 @@ def resident(request):
 def business(request):
     bizz= Business.objects.all()
     return render(request, 'neighborhood/business.html', {"bizz":bizz})
+
+def post(request):
+    
+    posted = post.objects.all()
+    form = OccupantForm()
+    if request.method == "POST or None":
+            form = PostForm(request.POST or None,instance=posted)
+            if form.is_valid():
+                ocupant = form.save(commit=False)
+                ocupant.save()
+                return redirect('residents')
+    else:
+        form = PostForm()
+    return render(request, 'neighborhood/occupants.html',{"form":form})
