@@ -2,16 +2,87 @@
 {% load bootstrap4 %}
 
 {% block content%}
-<h1> hello</h1>
 <div class="container">
     <div class="row">
-        <div class="card">
+        <div class="card" style="width: 100rem;">
             <div class="card-body">
-                <form action="{% url 'profile' %}" method="post">
-                    {% csrf_token%}
-                    {% bootstrap_form form %}
-                    <input class="btn btn-outline-success" type="submit" value="submitt">
-                </form>
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col">NEIGBORHOD</th>
+                        <th scope="col">EMAIL</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">{% if ocupant.occ_id%}
+                            <h5>{{ocupant.occ_id}} </h5>
+                            {% else %}
+                            <p>blank </p>
+                            {% endif %}</th>
+                        <td>{% if ocupant.name%}
+                            <h5>{{ocupant.name}} </h5>
+                            {% else %}
+                            <p>no  name </p>
+                            {% endif %}</td>
+                        <td>{% if ocupant.neighborhood%}
+                            <h5>{{ocupant.neighborhood}} </h5>
+                            {% else %}
+                            <p>no belong </p>
+                            {% endif %}</td>
+                        <td>{% if ocupant.email%}
+                            <h5>{{ocupant.email}} </h5>
+                            {% else %}
+                            <p>no email </p>
+                            {% endif %}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  <table class="table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
             </div>
         </div>
     </div>

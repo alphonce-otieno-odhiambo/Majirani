@@ -5,9 +5,10 @@
 <h1> hello</h1>
 <div class="container">
     <div class="row">
-        <div class="card">
+        <div class="card ">
             <div class="card-body">
-                <form action="{% url 'profile' %}" method="post">
+                <h6> Please fill in your Details </h6>
+                <form action="{% url 'view_profile' %}" method="post">
                     {% csrf_token%}
                     {% bootstrap_form form %}
                     <input class="btn btn-outline-success" type="submit" value="submitt">

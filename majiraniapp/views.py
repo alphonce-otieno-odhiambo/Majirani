@@ -34,8 +34,8 @@ def neigborhoods(request , id):
 
 def occupants(request):
     
-    ocupant = Occupant.objects.order_by()
-    form = OccupantForm(instance=ocupant)
+    ocupant = Occupant.objects.all()
+    form = OccupantForm()
     if request.method == "POST or None":
             form = OccupantForm(request.POST or None,instance=ocupant)
             if form.is_valid():
@@ -46,4 +46,4 @@ def occupants(request):
 
 def resident(request):
     ocupant = Occupant.objects.all()
-    return render (request, 'neighborhood/residents.htnl', {"ocupant":ocupant})
+    return render (request, 'neighborhood/residents.html', {"ocupant":ocupant})

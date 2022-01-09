@@ -31,12 +31,12 @@ class Neighborhood (models.Model):
 
     def _str_(self):
         return f'{self.neigname} '
-    @receiver(post_save, sender=User)
+    @receiver(post_save)
     def create_neighborhood(sender, instance, created, **kwargs):
         if created:
             Neighborhood.objects.create()
     @receiver(post_save, sender=User)
-    def save_user_pneigborhood(sender, instance, **kwargs):
+    def save_user_neigborhood(sender, instance, **kwargs):
         instance.neighborhood.save()
 
 class Occupant(models.Model):
