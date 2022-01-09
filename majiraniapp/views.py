@@ -31,3 +31,15 @@ def update_profile(request,id):
 def neigborhoods(request , id):
     neigborhood = Neighborhood.objects.get(id=id)
     return render(request, 'neighborhood/majirani.html', {"neigborhood":neigborhood})
+
+def occupants(request):
+    
+    ocupant = Occupant.objects.order_by()
+    form = OccupantForm(instance=ocupant)
+    if request.method == "POST or None":
+            form = OccupantForm(request.POST or None,instance=ocupant)
+            if form.is_valid():
+                ocupant = form.save(commit=False)
+                ocupant.save()
+                return redirect('residents')
+    return render(request, 'neighborhood/occupants.html')
