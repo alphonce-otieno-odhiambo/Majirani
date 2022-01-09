@@ -47,3 +47,7 @@ def occupants(request):
 def resident(request):
     ocupant = Occupant.objects.all()
     return render (request, 'neighborhood/residents.html', {"ocupant":ocupant})
+
+def business(request):
+    bizz= Business.objects.all()
+    return render(request, 'neighborhood/business.html', {"bizz":bizz})

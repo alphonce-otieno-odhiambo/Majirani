@@ -10,13 +10,13 @@ class ProfileForm(forms.ModelForm):
 class NeigborhoodForm(forms.ModelForm):
     class Meta:
         model = Neighborhood
-        fields = ("neigname","neigcount", "neiglocation")
+        fields = ("neigname", "neiglocation")
 
 class OccupantForm(forms.ModelForm):
     class Meta:
         model = Occupant
-        fields = ("name","neighborhood", "email")
+        fields = ("name","neighborhood")
 class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
-        fields = ("bizz_name","neighborhood", "bizz_email")
+        fields = ("bizz_name","bizz_neighborhood", "bizz_email")

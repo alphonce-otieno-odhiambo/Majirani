@@ -27,7 +27,7 @@ class Profile(models.Model):
 class Neighborhood (models.Model):
     neigname = models.CharField(max_length=150)
     neiglocation = models.CharField(max_length=150)
-    neigcount = models.IntegerField()
+    
 
     def _str_(self):
         return f'{self.neigname} '
@@ -43,7 +43,7 @@ class Occupant(models.Model):
     name = models.CharField(max_length=50)
     occ_id = models.AutoField(primary_key=True)
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
-    email = models.EmailField()
+    email = models.EmailField(null=True)
 
     def _str_(self):
         return f'{self.name} neigborhood'
@@ -62,8 +62,8 @@ class Business(models.Model):
     bizz_name = models.CharField(max_length=50)
     user = models.ManyToManyField(User)
     bizz_id = models.AutoField(primary_key=True)
-    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
-    bizz_email = models.CharField()
+    bizz_neighborhood = models.ManyToManyField(Neighborhood)
+    bizz_email = models.CharField(max_length=50)
 
     def save_business(self):
         self.save()

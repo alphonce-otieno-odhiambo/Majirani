@@ -12,4 +12,5 @@ urlpatterns = [
     path('neigborhoods/<int:id>', views.neigborhoods, name = 'neigborhoods'),
     path('occupants/', views.occupants, name='occupants'),
     path('resident/', views.resident, name='resident'),
+    path('business/', views.business, name='business'),
 ]
