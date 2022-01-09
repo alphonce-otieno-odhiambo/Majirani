@@ -61,6 +61,7 @@ class Occupant(models.Model):
 class Business(models.Model):
     bizz_name = models.CharField(max_length=50)
     user = models.ManyToManyField(User)
+    bizz_id = models.AutoField(primary_key=True)
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
     bizz_email = models.CharField()
 

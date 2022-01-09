@@ -4,3 +4,4 @@ from . models import *
 admin.site.register(Profile)
 admin.site.register(Neighborhood)
 admin.site.register(Occupant)
+admin.site.register(Business)
