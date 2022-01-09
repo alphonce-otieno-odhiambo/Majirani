@@ -39,11 +39,11 @@ class Neighborhood (models.Model):
     def save_user_pneigborhood(sender, instance, **kwargs):
         instance.neighborhood.save()
 
-class Ocuupant(models.Model):
+class Occupant(models.Model):
     name = models.CharField(max_length=50)
     occ_id = models.AutoField
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
-    email = models.EmailField
+    email = models.EmailField()
 
     def _str_(self):
         return f'{self.name} neigborhood'

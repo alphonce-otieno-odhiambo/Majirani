@@ -11,3 +11,8 @@ class NeigborhoodForm(forms.ModelForm):
     class Meta:
         model = Neighborhood
         fields = ("neigname","neigcount", "neiglocation")
+
+class OccupantForm(forms.ModelForm):
+    class Meta:
+        model = Occupant
+        fields = ("occ_id","name","neighborhood", "email")
