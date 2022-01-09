@@ -42,4 +42,8 @@ def occupants(request):
                 ocupant = form.save(commit=False)
                 ocupant.save()
                 return redirect('residents')
-    return render(request, 'neighborhood/occupants.html')
+    return render(request, 'neighborhood/occupants.html',{"form":form})
+
+def resident(request):
+    ocupant = Occupant.objects.all()
+    return render (request, 'neighborhood/residents.htnl', {"ocupant":ocupant})
