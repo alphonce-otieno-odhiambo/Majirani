@@ -88,6 +88,9 @@ class Post(models.Model):
     info = models.TextField(max_length=400)
     date_posted = models.DateTimeField(default=timezone.now)
 
-    def save_business(self):
+    def save_post(self):
         self.save()
+
+    def __str__(self):
+        return self.title
 
