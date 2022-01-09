@@ -44,4 +44,13 @@ class Ocuupant(models.Model):
     occ_id = models.AutoField
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
     email = models.EmailField
-    
+
+    def _str_(self):
+        return f'{self.name} neigborhood'
+    @receiver(post_save, sender=User)
+    def create_occupant(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(occupant=instance)
+    @receiver(post_save, sender=User)
+    def save_occupant(sender, instance, **kwargs):
+        instance.occupant.save()
