@@ -11,12 +11,11 @@ from . models import *
 def home (request):
     return render(request, 'home.html' )
 
-@login_required(login_url="/accounts/login/")
 def profile(request):
     current_user = request.user
     profile = Profile.objects.filter(user_id=current_user.id).first()           
     return render(request, "profile/view_profile.html", {"profile": profile, })
-@login_required(login_url="/accounts/login/")
+
 def update_profile(request,id):
     user = User.objects.get(id=id)
     profile = Profile.objects.get(user_id = user)
@@ -28,3 +27,4 @@ def update_profile(request,id):
                 profile.save()
                 return redirect('profile')
     return render(request, 'profile/profile_form.html', {"form":form})
+

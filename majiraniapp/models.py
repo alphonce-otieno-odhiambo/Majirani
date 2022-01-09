@@ -14,7 +14,8 @@ class Profile(models.Model):
     location = models.CharField(max_length=50)
     profile_picture = CloudinaryField('image')
 
-
+    def _str_(self):
+        return f'{self.user.username} profile'
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
@@ -22,3 +23,18 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
+
+class Neighborhood (models.Model):
+    neigname = models.CharField(max_length=150)
+    neiglocation = models.CharField(max_length=150)
+    neigcount = models.IntegerField()
+
+    def _str_(self):
+        return f'{self.neigname} '
+    @receiver(post_save, sender=User)
+    def create_neighborhood(sender, instance, created, **kwargs):
+        if created:
+            Neighborhood.objects.create()
+    @receiver(post_save, sender=User)
+    def save_user_pneigborhood(sender, instance, **kwargs):
+        instance.neighborhood.save()

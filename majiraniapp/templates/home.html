@@ -1,5 +1,66 @@
 {%extends "base.html"%}
 {% load bootstrap4 %}
 {% block content %}
-
+<style>
+    body {
+        background: #000000;
+background: -moz-linear-gradient(left, #000000 0%, #132052 56%, #C5C5C5 100%);
+background: -webkit-linear-gradient(left, #000000 0%, #132052 56%, #C5C5C5 100%);
+background: linear-gradient(to right, #000000 0%, #132052 56%, #C5C5C5 100%);
+    }
+</style>
+    <div class="container">
+        <div class="row">
+            <br><br>
+            <hr>
+            <div class="col-md-4" id="bgblack">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">Active</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                  </ul>
+            </div>
+            <div class="col-md-8">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100" src="https://media.istockphoto.com/photos/panoramic-aerial-view-of-a-upscale-suburbs-in-atlanta-picture-id1292500139?b=1&k=20&m=1292500139&s=170667a&w=0&h=2memBptV8z34znd21udu-s4MfGZx7k9dg8l2h39gM2o=" alt="First slide" style="width: 450px;height: 350px;">
+                      </div>
+                      <div class="carousel-caption d-none d-md-block">
+                        <h3> Majirani Area</h3>
+                        <p> We explore and find out the streets of state</p>
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="https://media.istockphoto.com/photos/bungalows-in-archer-heights-chicago-picture-id175420828?b=1&k=20&m=175420828&s=170667a&w=0&h=829r5L70GOB8sjotdLkjDhBdrgo8eaSuovGOkePHZyk=" alt="Second slide" style="width: 450px;height: 350px;">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="https://media.istockphoto.com/photos/office-towers-in-downtown-seattle-at-night-drone-shot-picture-id1340575760?b=1&k=20&m=1340575760&s=170667a&w=0&h=pNzj_Q0Rz1sjWsJpC8n5h9dszTSvk3BkfM_HMvV-90Y=" alt="Third slide" style="width: 450px;height: 350px;">
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
