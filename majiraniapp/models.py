@@ -63,3 +63,21 @@ class Business(models.Model):
     user = models.ManyToManyField(User)
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
     bizz_email = models.CharField()
+
+    def save_business(self):
+        self.save()
+
+    def update_business(self):
+        self.update()
+    
+    def delete_business(self):
+        self.delete()
+
+    def create_business(self):
+        Business.objects.create(business = isinstance)
+
+    def find_business(business_id):
+        business_id.find_business()
+
+    def __str__(self):
+        return self.bizz_name
