@@ -57,3 +57,9 @@ class Occupant(models.Model):
     @receiver(post_delete, sender=User)
     def delete_occupant(sender, instance, **kwargs):
         instance.occupant.delete()
+
+class Business(models.Model):
+    bizz_name = models.CharField(max_length=50)
+    user = models.ManyToManyField(User)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
+    bizz_email = models.CharField()
