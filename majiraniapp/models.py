@@ -11,7 +11,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile',null=True)
     bio = models.TextField(max_length=200)
-    email = models.EmailField()
+    location = models.CharField(max_length=50)
     profile_picture = CloudinaryField('image')
 
 
