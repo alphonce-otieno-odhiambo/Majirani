@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+{% load bootstrap4 %}
+
+{% block content%}
+<h1> hello</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="jumbotron">
+                <h1 class="display-4">Businesses Available in the neigborhoods</h1>
+                <p class="lead">{% if bizz.bizz_name%}
+                    <h5>{{bizz.bizz_name}} </h5>
+                    {% else %}
+                    <p>no neigborhood name </p>
+                    {% endif %}</p>
+                <hr class="my-4">
+                {% if bizz.bizz_neighborhood%}
+                    <h5>{{bizz.bizz_neighborhood}} </h5>
+                    {% else %}
+                    <p>no neigborhood name 
+                    {% endif %}.</p>
+                    <h4> {% if bizz.bizz_email%}
+                        <h5>{{bizz.bizz_email}} </h5>
+                        {% else %}
+                        <p>no neigborhood name 
+                        {% endif %}</h4>
+                <p class="lead">
+                  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                </p>
+              </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
