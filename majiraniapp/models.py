@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields import BooleanField, related
 from django.dispatch import receiver
 from django.db.models.signals import post_save,post_delete
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
-from django.contrib.contenttypes.fields import GenericRelation
+
 
 
 # Create your models here.
@@ -26,25 +27,25 @@ class Profile(models.Model):
 
 class Neighborhood (models.Model):
     neigname = models.CharField(max_length=150)
-    neiglocation = models.CharField(max_length=150)
-    neigcount = models.IntegerField(500000) 
+    neiglocation = models.CharField(max_length=150 )
+    neigcount = models.IntegerField(null= True ) 
     
 
     def _str_(self):
-        return f'{self.neigname} '
-    @receiver(post_save)
-    def create_neighborhood(sender, instance, created, **kwargs):
+        return f'{self.neigname}'
+    @receiver(post_save, sender = User)
+    def create_neighborhood(sender,instance, created, **kwargs):
         if created:
-            Neighborhood.objects.create()
+            Neighborhood.objects.create(neighborhood=instance)
     @receiver(post_save, sender=User)
-    def save_user_neigborhood(sender, instance, **kwargs):
+    def save_user_neighborhood(sender, instance, created, **kwargs):
         instance.neighborhood.save()
 
 class Occupant(models.Model):
     name = models.CharField(max_length=50)
     occ_id = models.AutoField(primary_key=True)
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
-    email = models.EmailField()
+    email = models.EmailField( null=True )
 
     def _str_(self):
         return f'{self.name} neigborhood'

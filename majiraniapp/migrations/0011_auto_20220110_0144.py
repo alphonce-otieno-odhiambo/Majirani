@@ -17,19 +17,19 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=150)),
                 ('info', models.TextField(max_length=400)),
-                ('date_posted', models.DateTimeField(default=django.utils.timezone.now)),
+                ('date_posted', models.DateTimeField(default = 1)),
             ],
         ),
         migrations.AddField(
             model_name='neighborhood',
             name='neigcount',
-            field=models.IntegerField(default=django.utils.timezone.now, verbose_name=500000),
+            field=models.IntegerField(default = 1, verbose_name=500000),
             preserve_default=False,
         ),
         migrations.AlterField(
             model_name='occupant',
             name='email',
-            field=models.EmailField(default=django.utils.timezone.now, max_length=254),
+            field=models.EmailField(default = 1, max_length=254),
             preserve_default=False,
         ),
     ]
