@@ -43,6 +43,8 @@ def occupants(request):
                 ocupant = form.save(commit=False)
                 ocupant.save()
                 return redirect('residents')
+    else:
+        form = OccupantForm()
     return render(request, 'neighborhood/occupants.html',{"form":form})
 
 def resident(request):

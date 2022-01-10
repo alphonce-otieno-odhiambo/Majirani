@@ -16,40 +16,13 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">{% if ocupant.occ_id%}
-                            <h5>{{ocupant.occ_id}} </h5>
-                            {% else %}
-                            <p>blank </p>
-                            {% endif %}</th>
-                        <td>{% if ocupant.name%}
-                            <h5>{{ocupant.name}} </h5>
-                            {% else %}
-                            <p>no  name </p>
-                            {% endif %}</td>
-                        <td>{% if ocupant.neighborhood%}
-                            <h5>{{ocupant.neighborhood}} </h5>
-                            {% else %}
-                            <p>no belong </p>
-                            {% endif %}</td>
-                        <td>{% if ocupant.email%}
-                            <h5>{{ocupant.email}} </h5>
-                            {% else %}
-                            <p>no email </p>
-                            {% endif %}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
+                        <tr>{% for o in ocupant %}
+                            <th scope="row">{{o.occ_id}}</th>
+                            <td>{{o.name}}</td>
+                            <td>{{o.neighborhood}}</td>
+                            <td>{{o.email}}</td>
+                          </tr>
+                      
                     </tbody>
                   </table>
                   

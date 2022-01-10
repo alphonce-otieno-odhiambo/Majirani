@@ -10,14 +10,15 @@
                 <h1 class="display-4">Businesses Available in the neigborhoods</h1>
                 <p class="lead">
                 <hr class="my-4">
-                
+                <hr>
                     {% for b in bizz %}
-                    <h4>{{b.bizz_name}} </h4>
-                    <h5>{{b.bizz_id}} </h5>
+                    <h4>{{b.bizz_id}} </h4>
+                    <h5>{{b.bizz_name}} </h5>
                     <h5>{{b.bizz_neighborhood}} </h5>
                     <h5>{{b.bizz_email}} </h5>
                     
                     {% endfor %}
+                    <hr>
                 <p class="lead">
                   <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
                 </p>
