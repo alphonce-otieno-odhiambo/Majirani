@@ -6,7 +6,15 @@
             <div class="col-sm-12">
                 <div class="card" style="width: 300rem;">
                     <div class="card-body">
-
+                        {% if query %}
+                        <h4> You searched for {{query}}</h4>
+                        <br>
+                        {% for biss in bizz% }
+                        <h3>{{biss}} - {{biss.bizz_neighborhood}} </h3>
+                        {% endfor %}
+                        {% else %}
+                        <p> You did not search for anything</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
