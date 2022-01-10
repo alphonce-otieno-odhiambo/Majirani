@@ -74,4 +74,6 @@ def search_business(request):
     if request.method =='POST':
         query = request.POST['query']
         bizz = Business.objects.filter(bizz_name__icontans=query)
-        return render(request, 'search.html', {"query":query})
+        return render(request, 'search.html', {"query":query, "bizz":bizz})
+    else:
+        return render(request,'search.html',)
