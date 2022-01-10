@@ -52,8 +52,7 @@ def business(request):
     bizz= Business.objects.all()
     return render(request, 'neighborhood/business.html', {"bizz":bizz})
 
-def post(request):
-    
+def post(request):    
     posted = Post.objects.all()
     form = OccupantForm()
     if request.method == "POST or None":
@@ -64,7 +63,6 @@ def post(request):
                 return redirect('post_view')
     else:
         form = PostForm()
-
     return render(request, 'neighborhood/post.html',{"form":form})
 
 def post_view(request):
