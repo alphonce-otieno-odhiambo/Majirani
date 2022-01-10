@@ -5,6 +5,8 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save,post_delete
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
+import sys
+sys.setrecursionlimit(2000)
 
 
 
@@ -30,16 +32,20 @@ class Neighborhood (models.Model):
     neiglocation = models.CharField(max_length=150 )
     neigcount = models.IntegerField(null= True ) 
     
+    def save_neighborhood(self):
+        self.save()
 
+    def update__neighborhood(self):
+        self.update()
+    
+    def delete__neighborhood(self):
+        self.delete()
+
+    
+    
     def _str_(self):
         return f'{self.neigname}'
-    @receiver(post_save, sender = User)
-    def create_neighborhood(sender,instance, created, **kwargs):
-        if created:
-            Neighborhood.objects.create(neighborhood=instance)
-    @receiver(post_save, sender=User)
-    def save_user_neighborhood(sender, instance, created, **kwargs):
-        instance.neighborhood.save()
+    
 
 class Occupant(models.Model):
     name = models.CharField(max_length=50)
@@ -47,18 +53,23 @@ class Occupant(models.Model):
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='neigborhood')
     email = models.EmailField( null=True )
 
+    def save_occupant(self):
+        self.save()
+
+    def update__occupant(self):
+        self.update()
+    
+    def delete__occupant(self):
+        self.delete()
+
+    
+    
     def _str_(self):
-        return f'{self.name} neigborhood'
-    @receiver(post_save, sender=User)
-    def create_occupant(sender, instance, created, **kwargs):
-        if created:
-            Profile.objects.create(occupant=instance)
-    @receiver(post_save, sender=User)
-    def save_occupant(sender, instance, **kwargs):
-        instance.occupant.save()
-    @receiver(post_delete, sender=User)
-    def delete_occupant(sender, instance, **kwargs):
-        instance.occupant.delete()
+        return f'{self.name}'
+    
+
+
+    
 
 class Business(models.Model):
     bizz_name = models.CharField(max_length=50)

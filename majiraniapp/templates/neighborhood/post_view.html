@@ -52,28 +52,26 @@
                 {% endif %}
                 </div>
             </div>
-            {% if posted.title %}
+            {% for p in posted%}
             <div >
-                <h5>{{posted.title}} </h5>
-                {% else %}
-                <P> please confirm your post again!!</P>
-                {% endif %}
+                <h5>{{p.title}} </h5>
+                
               <div class="p-4">
-                {% if posted.info %}
+                
                 <h5 class="headings text-center"> <a data-bs-toggle="modal"                    
-                    class="text-white text-capitalize modal-click">{{posted.info}}</a></h5>
-                    {% else %}
+                    class="text-white text-capitalize modal-click">{{p.info}}</a></h5>
+                    
                     <div class="alert alert-danger" role="alert">
-                        Error while loading information
+                        
                       </div>
-                    {% endif %}
+                    
                 <div class="d-flex justify-content-between">
                   <div>
-                    {% if posted.info %}
-                    <h4> {{if posted.info}}</h4>
-                    {% else %}
-                    <h6> No date </h6>
-                    {% endif %}
+                    
+                    <h4> {{ p.date_posted}}</h4>
+                    
+                    
+                    {% endfor %}
                   </div>
                   <div>
                     <small class="text-muted">

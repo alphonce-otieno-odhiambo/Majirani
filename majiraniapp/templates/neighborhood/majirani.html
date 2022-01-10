@@ -17,24 +17,12 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
+                          <tr>{% for n in neigborhood %}
                             <th scope="row">1</th>
-                            <td>{% if neigborhood.neigname%}
-                                <h5>{{neigborhood.neigname}} </h5>
-                                {% else %}
-                                <p>no neigborhood name </p>
-                                {% endif %}
-                            </td>
-                            <td>{% if neigborhood.neiglocation%}
-                                <h5>{{neigborhood.neiglocation}} </h5>
-                                {% else %}
-                                <p>no neigborhood location </p>
-                                {% endif %}</td>
-                            <td>{% if neigborhood.neigcount%}
-                                <h5>{{neigborhood.neigcount}} </h5>
-                                {% else %}
-                                <p>no neigborhood  </p>
-                                {% endif %}</td>
+                            <td>  {{n.neigname}} </td>
+                            <td> {{n.neiglocation}}</td>
+                            <td>{{n.neigcount}}</td>
+                                {% endfor %}
                                 <td><!-- Button trigger modal -->
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                       View the area scale
@@ -52,23 +40,7 @@
                                           </div>
                                           <div class="modal-body">
                                             <img class="d-block w-100" src="https://media.istockphoto.com/photos/panoramic-aerial-view-of-a-upscale-suburbs-in-atlanta-picture-id1292500139?b=1&k=20&m=1292500139&s=170667a&w=0&h=2memBptV8z34znd21udu-s4MfGZx7k9dg8l2h39gM2o=" alt="First slide" style="width: 450px;height: 350px;">
-                                            {% if bizz.bizz_name%}
-                                                <h5>{{bizz.bizz_name}} </h5>
-                                                {% else %}
-                                                <p>no neigborhood name </p>
-                                                {% endif %}</p>
-                                            <hr class="my-4">
-                                            {% if bizz.bizz_neighborhood%}
-                                                <h5>{{bizz.bizz_neighborhood}} </h5>
-                                                {% else %}
-                                                <p>no neigborhood name 
-                                                {% endif %}.</p>
-                                                <h4> {% if bizz.bizz_email%}</h4>
-                                                    <h5>{{bizz.bizz_email}} </h5>
-                                                    {% else %}
-                                                    <p>no neigborhood name 
-                                                    {% endif %}</p>
-                                          </div>
+                                            
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             <button type="button" class="btn btn-primary">Save changes</button>
