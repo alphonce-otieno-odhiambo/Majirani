@@ -1,4 +1,5 @@
 
+from django.db.models import query
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -68,3 +69,9 @@ def post(request):
 def post_view(request):
     posted = Post.objects.all()
     return render(request, 'neighborhood/post_view.html', {"posted":posted})
+
+def search_business(request):
+    if request.method =='POST':
+        query = request.POST['query']
+        bizz = Business.objects.filter(bizz_name__icontans=query)
+        return render(request, 'search.html', {"query":query})
