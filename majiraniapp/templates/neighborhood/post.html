@@ -7,7 +7,7 @@
         <div class="card ">
             <div class="card-body" style="width: 60rem;">
                 <h6> Please fill in your Details </h6>
-                <form action="{% url 'view_profile' %}" method="post">
+                <form action="{% url 'post_view' %}" method="post">
                     {% csrf_token%}
                     {% bootstrap_form form %}
                     <input class="btn btn-outline-success" type="submit" value="submitt">
