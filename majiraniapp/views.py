@@ -19,7 +19,7 @@ def profile(request):
 
 def update_profile(request,id):
     user = User.objects.get(id=id)
-    profile = Profile.objects.get(user_id = user)
+    profile = Profile.objects.get(user = user)
     form = ProfileForm(instance=profile)
     if request.method == "POST":
             form = ProfileForm(request.POST,request.FILES,instance=profile)
