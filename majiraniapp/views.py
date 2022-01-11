@@ -26,12 +26,15 @@ def update_profile(request,id):
             if form.is_valid():
                 profile = form.save(commit=False)
                 profile.save()
-                return redirect('profile')
+                return redirect('profile/profile_form')
+    else:
+        form = ProfileForm()
     return render(request, 'profile/profile_form.html', {"form":form})
 
 def neigborhoods(request , id):
-    neigborhood = Neighborhood.objects.get(id=id)
-    return render(request, 'neighborhood/majirani.html', {"neigborhood":neigborhood})
+    majirani = Neighborhood.objects.all()
+    neigborhood = Neighborhood.objects.filter(id=id)
+    return render(request, 'neighborhood/majirani.html', {"neigborhood":neigborhood, "majirani":majirani})
 
 def occupants(request):
     

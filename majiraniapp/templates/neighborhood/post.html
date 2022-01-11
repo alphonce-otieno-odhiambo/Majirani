@@ -2,11 +2,10 @@
 {% load bootstrap4 %}
 
 {% block content%}
-<h1> hello</h1>
 <div class="container">
     <div class="row">
         <div class="card ">
-            <div class="card-body">
+            <div class="card-body" style="width: 60rem;">
                 <h6> Please fill in your Details </h6>
                 <form action="{% url 'view_profile' %}" method="post">
                     {% csrf_token%}

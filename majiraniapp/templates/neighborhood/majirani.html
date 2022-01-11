@@ -17,12 +17,13 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>{% for n in neigborhood %}
+                          <tr>{% for n in majirani %}
                             <th scope="row">1</th>
                             <td>  {{n.neigname}} </td>
                             <td> {{n.neiglocation}}</td>
                             <td>{{n.neigcount}}</td>
                                 {% endfor %}
+                              
                                 <td><!-- Button trigger modal -->
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                       View the area scale

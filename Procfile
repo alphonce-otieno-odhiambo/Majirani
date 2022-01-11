@@ -1,0 +1,1 @@
+web: gunicorn majiraniproject.wsgi --log-file -
