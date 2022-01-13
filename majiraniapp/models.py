@@ -74,7 +74,7 @@ class Occupant(models.Model):
     
 
 class Business(models.Model):
-    bizz_name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
     user = models.ManyToManyField(User)
     bizz_id = models.AutoField(primary_key=True)
     bizz_neighborhood = models.ManyToManyField(Neighborhood)
@@ -92,8 +92,10 @@ class Business(models.Model):
     def create_business(self):
         Business.objects.create(business = isinstance)
 
-    def find_business(business_id):
-        business_id.find_business()
+    @classmethod
+    def search_by_name(cls, search_term):
+        business = cls.objects.filter(name__icontains=search_term)
+        return business
 
     def __str__(self):
         return self.bizz_name

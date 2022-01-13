@@ -19,7 +19,7 @@ class OccupantForm(forms.ModelForm):
 class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
-        fields = ("bizz_name","bizz_neighborhood", "bizz_email")
+        fields = ("name","bizz_neighborhood", "bizz_email")
 
 class PostForm(forms.ModelForm):
     class Meta:

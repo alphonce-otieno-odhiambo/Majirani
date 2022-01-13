@@ -8,25 +8,37 @@ background: -webkit-linear-gradient(left, #000000 0%, #132052 56%, #C5C5C5 100%)
 background: linear-gradient(to right, #000000 0%, #132052 56%, #C5C5C5 100%);
     }
 </style>
-<section class="profile container">
-    <div class=" mt-5">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card" style="width: 300rem;">
+<div class="container ser">
+    <h2 class="text-center mb-5">Your search results</h2>
+    <div class="row biz">
+        {% for biz in bizz %}
+            <div class="col-md-12">
+                <div class="card" >
                     <div class="card-body">
-                        {% if query %}
-                        <h4> You searched for {{query}}</h4>
-                        <br>
-                        {% for biss in bizz% }
-                        <h3>{{biss}} - {{biss.bizz_neighborhood}} </h3>
-                        {% endfor %}
-                        {% else %}
-                        <p> You did not search for anything</p>
-                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="{{biz.photo.url}}" alt="" style="border-radius: 10%; width: 100%; height: auto;">
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="card-title text-capitalize">{{ biz.name }}</h5>
+                                <p>{{ biz.description }}</p>
+                                <p>{{ biz.bizz_neighborhood }}</p>
+                                <p>{{ biz.bizz_email }}</p>
+                                <a href="malto:{{ biz.email }}" class="card-link">Email: <span class="text-bold text-primary">{{ biz.email }}</span> </a>
+                            </div>
+                       <br>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            {% empty %}
+            <div class="col-md-12">
+                <div class="card mb-4 post-card">
+                    <div class="card-body text-center">
+                        <h6 class="fade-item mb-2 text-danger">No businesses found within your Neighborhood!!</h6>
                     </div>
                 </div>
-            </div>
-        </div>
+            {% endfor %}
     </div>
-</section>
+</div>
 {% endblock %}

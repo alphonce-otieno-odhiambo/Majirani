@@ -75,10 +75,13 @@ def post_view(request):
     posted = Post.objects.all()
     return render(request, 'neighborhood/post_view.html', {"posted":posted})
 
+@login_required(login_url="/accounts/login/")
 def search_business(request):
-    if request.method =='POST':
-        query = request.POST['query']
-        bizz = Business.objects.filter(bizz_name__icontans=query)
-        return render(request, 'search.html', {"query":query, "bizz":bizz})
+    if 'search_term' in request.GET and request.GET["search_term"]:
+        search_term = request.GET.get("search_term")
+        searched_bizz = Business.objects.filter(name__icontains=search_term)
+        message = f"Search For: {search_term}"
+        return render(request, "search.html", {"message": message, "bizz": searched_bizz})
     else:
-        return render(request,'search.html',)
+        message = "You haven't searched for any term"
+        return render(request, "search.html", {"message": message})
