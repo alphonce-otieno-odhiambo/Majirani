@@ -16,6 +16,8 @@ class Profile(models.Model):
     bio = models.TextField(max_length=200)
     location = models.CharField(max_length=50)
     profile_picture = CloudinaryField('image')
+    contact = models.CharField(max_length=100, null=True)
+    created_on = models.DateTimeField(auto_now_add=True,null=True)
 
     def _str_(self):
         return f'{self.user.username} profile'
