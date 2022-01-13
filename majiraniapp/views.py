@@ -19,14 +19,14 @@ def profile(request):
 
 def update_profile(request,id):
     user = User.objects.get(id=id)
-    profile = Profile.objects.get(user = user)
+    profile = Profile.objects.get(user_id = user)
     form = ProfileForm(instance=profile)
     if request.method == "POST":
             form = ProfileForm(request.POST,request.FILES,instance=profile)
             if form.is_valid():
                 profile = form.save(commit=False)
                 profile.save()
-                return redirect('profile/profile_form')
+                return redirect('profile')
     else:
         form = ProfileForm()
     return render(request, 'profile/profile_form.html', {"form":form})

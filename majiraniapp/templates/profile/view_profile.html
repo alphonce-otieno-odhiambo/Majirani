@@ -9,72 +9,44 @@ background: linear-gradient(to right, #000000 0%, #132052 56%, #C5C5C5 100%);
     }
 </style>
 <section class="profile container">
-    <div class=" mt-5">
-        <div class="row">
-            <div class="jumbotron">
-                <div class="row">
-                    <div class="col-md-4">
-                        {% if profile.profile_photo %}
-                <img src="{{profile.profile_picture.url}}" alt="" style="border-radius: 50%; width: 50%; height: auto;">
-                {%else%}
-                <img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"
-                    class="card-img-top" alt="My profile picture">
-                {% endif %}
-                    </div>
-                    <hr>
-                    <div class="col-md-8">
-                     <div class="card-body">
-                         <h5 class="card-title"><p>Username: {{ user.username }}</p></h5>
-                         <h5 class="card-text">{% if profile.bio %}
-                            Bio:
-                            <br> 
-                            {{ profile.bio }}
+    <section class="container profile">
+        <div class=" mt-5">
+            <div class="row">
+                <div class="card col-md-6 text-left">
+                    {% if profile.profile_picture %}
+                    <img src="{{profile.profile_picture.url}}" alt="" style="border-radius: 50%; width: 50%; height: auto;">
+                    {%else%}
+                    <img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"
+                        class="card-img-top" alt="My profile picture">
+                    {% endif %}
+                    <div class="card-body">
+                        <p>Username: {{ user.username }}</p>
+                        <p>
+                            {% if profile.bio %}
+                            <small>Bio: {{ profile.bio }}</small>
                             {% else %}
                             <span class="text-danger">No about me</span>
-                            {% endif %}.</h5>
-                         <div>
-                            <a href="{%url 'update_profile' id=user.id %}"
-                                    class="btn btn-outline-dark bg-dark text-white rounded-pill">
-                                    Update Profile
-                                </a>
-                         </div>
-                         
-                       </div>
+                            {% endif %}
+                        </p>
+                        <p>Contact: {{ profile.contact }}</p>
+                        <p>Location: {{ profile.location }}</p>
+                        <p>Neighborhood: {{ profile.neighborhood }}</p>
+                        <h6>Joined on: <span class="badge rounded-pill bg-secondary text-white">
+                                {{ user.date_joined|date }} </span></h6>
                     </div>
-              </div>
-            <!-- <div class="card col-md-6 text-left">
-                {% if profile.profile_photo %}
-                <img src="{{profile.profile_picture.url}}" alt="" style="border-radius: 50%; width: 50%; height: auto;">
-                {%else%}
-                <img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"
-                    class="card-img-top" alt="My profile picture">
-                {% endif %}
-                <div class="card-body">
-                    <p>Username: {{ user.username }}</p>
-                    <p>
-                        {% if profile.bio %}
-                        <small>Bio: {{ profile.bio }}</small>
-                        {% else %}
-                        <span class="text-danger">No about me</span>
-                        {% endif %}
-                    </p>
                 </div>
-            </div>
-            <div class="col-md-6 text-center">
-                <div class="row">
-                    <div class="col-md-6 details">
-                        <div class="first">
-                            <!-- <div>
-                                <a href="{%url 'update_profile' user.id %}"
-                                    class="btn btn-outline-dark bg-dark text-white rounded-pill">
-                                    Update Profile
-                                </a>
-                            </div> -->
+                <div class="col-md-6 text-center">
+                    <div class="row">
+                        <div class="col-md-6 details">
+                            <div class="first">
+                                <div>
+                                    <a href="{%url 'update_profile' user.id %}"
+                                        class="btn btn-outline-dark bg-dark text-white rounded-pill">
+                                        Edit Profile
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div> -->
-            </div>
-        </div>
     </div>
 </section>
 {% endblock %}

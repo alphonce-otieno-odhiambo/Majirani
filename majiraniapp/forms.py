@@ -5,7 +5,7 @@ from . models import *
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ("bio","location", "profile_picture")
+        fields = ("bio","location","contact", "profile_picture")
 
 class NeigborhoodForm(forms.ModelForm):
     class Meta:
